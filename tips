@@ -1,0 +1,36 @@
+
+function renderAll()
+-render the main page
+ 
+ function handleStartBtn(){
+   $('main).on('click','#)
+ }
+-Bind the event handler for startBtn 
+  - the event handler for startBtn on click will load the quizz 
+
+function quizzPage(){}
+-  rendering the quizz page 
+  - dynamically generate main quizz html
+function questionSection(){} 12-27 loop
+  - generate question based on index :
+  
+  function handleAnswer(){}
+  - Bind the event handler for the check answer button : will function checkAnswer()
+   
+   function checkAnswer (){}
+    - check if answer is correct 
+      - display the check 
+      -bind next button
+
+      function handle updateQuestion(){}
+    - update the question
+     - update index : stored in STORE
+     - update score : sotored in STORE
+    reached ned of the quizz ? display final : recall questionSection
+     - display question/final
+
+function renderFinal
+- display final page  
+ - display score 
+ - bind the resetBtn will call the quizz page function
+  - restart the quizz 

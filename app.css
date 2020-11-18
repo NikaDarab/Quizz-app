@@ -1,0 +1,24 @@
+/* Your styles should be mobile-first and responsive */
+
+/** 
+  * If you are unclear on how to utilize a mobile-first, responsive technique to write your CSS, here is an example: 
+  *
+  * https://github.com/andreacardybailey/responsive_example/blob/master/styles/responsive-base.css 
+  *
+*/
+.title {
+  display:flex;
+  /* border: 1px solid rgb(0, 0, 0); */
+  justify-content: center;
+  margin: 20px 25px;
+  padding: 0px;
+  color: #000;
+}
+
+.start-btn {
+  margin: auto;
+  padding: 8px 16px;
+  display: flex;
+  justify-content: center;
+  
+}
