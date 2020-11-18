@@ -53,16 +53,16 @@ const store = {
 
 // These functions return HTML templates
 //generate the start button
-let startBtn = $('<input/>').attr({ type: 'button', name:'btn1', value:'Start Quiz' }).addClass('start-btn').on('startQuiz');
-$('#root').append(startBtn);
+// let startBtn = $('<input/>').attr({ type: 'button', name:'btn1', value:'Start Quiz' }).addClass('start-btn').on('startQuiz');
+// $('#root').append(startBtn);
 
-let startQuiz = () => {
-  $('#root').empty();
-};
+// let startQuiz = () => {
+//   $('#root').empty();
+// };
 
-let generateQuestions = (store) => {
-  return `<div question-id="${question.id}class="qestion">
-  <span class`
+// let generateQuestions = (store) => {
+//   return `<div question-id="${question.id}class="qestion">
+//   <span class`
   // generate questions
 
 };

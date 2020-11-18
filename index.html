@@ -1,28 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="app.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="app.css" rel="stylesheet" type="text/css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Quiz App</title>
-  <link rel="stylesheet" href="app.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet"
-    type="text/css" />
-  <link href="app.css" rel="stylesheet" type="text/css" />
-</head>
+  <body>
+    <header>
+      <h1 class="title">👯‍ Girlfriends 👯‍♀️</h1>
+    </header>
+    <main>
+      <div class="container">
+        <button class="start-btn">Start</button>
+        <div class="questions">
+          <h3>Questions</h3>
+        </div>
+        <div>
+          <p>Q1.This is question 1?</p>
+          <div class="answers" id="answers">
+            <input type="radio" id="answer1" name="answer1" value="a1" />
+            <label for="a1">Answer 1</label><br />
+            <input type="radio" id="answer2" name="answer2" value="a2" />
+            <label for="a2">Answer 2</label><br />
+            <input type="radio" id="answer2" name="answer2" value="a2" />
+            <label for="a2">Answer 3</label>
+          </div>
+        </div>
+      </div>
+    </main>
 
-<body>
-  <header>
-    <h1 class="title">
-      👯‍ Girlfriends 👯‍♀️
-    </h1>
-  </header>
-  <div>
-    <button>Start</button>
-  </div>
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.js" crossorigin="anonymous"></script>
-  <script src="app.js"></script>
-</body>
-
+    <div></div>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="app.js"></script>
+  </body>
 </html>

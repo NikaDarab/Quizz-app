@@ -6,6 +6,23 @@
   * https://github.com/andreacardybailey/responsive_example/blob/master/styles/responsive-base.css 
   *
 */
+html {
+  box-sizing: border-box;
+  height: 100%;
+  margin:0;
+  padding:0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  width:100%;
+  max-width: 400px;
+  margin: auto;
+  justify-content: center;
+}
+
 .title {
   display:flex;
   /* border: 1px solid rgb(0, 0, 0); */
@@ -14,11 +31,26 @@
   padding: 0px;
   color: #000;
 }
+.container {
+
+}
 
 .start-btn {
   margin: auto;
   padding: 8px 16px;
   display: flex;
+  justify-content: center; 
+}
+
+.questions {
+  margin: auto;
+  padding: 50px 16px;
+  display: flex;
   justify-content: center;
-  
+}
+
+h3 {
+  margin: auto;
+  padding: 1px 3px;
+  display: flex;
 }
