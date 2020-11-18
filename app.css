@@ -42,6 +42,17 @@ main {
   justify-content: center; 
 }
 
+.submit-btn {
+margin: auto 5em;
+justify-content: center;
+
+}
+
+.next-btn {
+margin: auto;
+
+}
+
 .questions {
   margin: auto;
   padding: 50px 16px;
