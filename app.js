@@ -54,27 +54,41 @@ function generateQuestions() {
   let question = store.questions[store.questionNumber];
 
   let answer = question.answers.map((answer, index) => {
-    console.log(answer, index);
+    
 
     if (index === 0) {
       return `<input type="radio" id="answer${index}" name="answer" value="${answer}" required>
     <label for="answer${index}">${answer}</label><br />`;
-    } 
-    return `<input type="radio" id="answer${index}" name="answer" value="${answer}" required />
+    }  
+    return `<input type="radio" id="answer${index}" name="answer" value="${answer}"/>
     <label for="answer${index}">${answer}</label><br />`;
   });
 
-  console.log(answer);
   return `<div class="container">
-  <div class="status">Current question: ${store.questionNumber+1}</div>
-  <div class="score">Current score:${store.score}</div>
+  <div class="status"><span>Current question: ${store.questionNumber+1}</span></div>
+  <span><div class="score"><span>Current score:${store.score}</div><span>
   <form class="questions"id="question">
   <h2>${question.question}</h2>
   ${answer.join("")}
+  <button class="submit-btn" id="submit" type="submit">Submit</button></div>
   </form>
-  <button class="submit-btn"type="submit">Submit</button></div>
 </div>`;
 }
+function generateCorrectAnswer(){
+  return `
+  <div class="correct-answer">
+  <h2> yeay, that's the right answer</h2>
+  <button id="next-btn>Next</button></div>
+  <p>Current Score:${store.score}</p>`;
+}
+function generateFinalPage(){
+  return `
+  <div class="finalPage">
+  <h2>Congrats, this is the end</h2>;
+  <p>Final Score: ${store.score}</p>
+  <button id="restart-btn">Start Over</button>`;
+}
+
 
 /********** RENDER FUNCTION(S) **********/
 
@@ -82,7 +96,7 @@ function generateQuestions() {
 
 /********** EVENT HANDLER FUNCTIONS **********/
 function handleStartQuiz() {
-  $("main").on("click", "#start-btn", function (event) {
+  $("main").on("click", ".start-btn", function (event) {
     store.quizStarted = true;
     render();
   });
@@ -92,16 +106,24 @@ function handleAnswerSubmit() {
   $("main").on("submit",'#question',function(event){
     event.preventDefault();
     let chosenAnswer = $("input[name='answer']:checked").val();
-    console.log(chosenAnswer);
-
-    store.question++;
-    console.log("question number", store.questionNumber);
-    render();
+    let correctAnswer =store.questions[store.questionNumber].correctAnswer;
+    if(chosenAnswer===correctAnswer) {
+      
+      $('main').html(generateCorrectAnswer());
+      store.score++;
+    } 
+    $(main).html('<p>This is wrong</p>');
   });
+}
+function handleNextQuestion() {
+  $("main").on("submit",' #nextQuestion',function(){
+    store.questionNumber++;
+  });
+
 }
 
 function handleRestart() {
-  $('main').on('click',"#restart",function(){
+  $('main').on('click',"#restart-btn",function(){
     store.quizStarted =false;
     store.questionNumber=0;
     render();
@@ -111,9 +133,11 @@ function handleRestart() {
 
 function render() {
   let html = "";
-  !store.quizStarted
-    ? (html = generateMainPage())
-    : (html = generateQuestions());
+  store.quizStarted
+    ? (html = generateQuestions())
+    : store.questionNumber === store.questions.length ?
+      (html = generateFinalPage):
+      (html = generateMainPage());
 
   $("main").html(html);
 }
@@ -122,6 +146,7 @@ function main() {
   render();
   handleStartQuiz();
   handleAnswerSubmit();
+  handleNextQuestion();
   handleRestart();
 
 }
