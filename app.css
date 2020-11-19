@@ -17,7 +17,6 @@ main {
   display: flex;
   flex-direction: column;
   padding: 20px 0;
-  width:100%;
   max-width: 400px;
   margin: auto;
   justify-content: center;
@@ -31,9 +30,7 @@ main {
   padding: 0px;
   color: #000;
 }
-.container {
 
-}
 
 .start-btn {
   margin: auto;
@@ -43,8 +40,8 @@ main {
 }
 
 .submit-btn {
-margin: auto 5em;
-justify-content: center;
+margin: 30px 0 ;
+padding: 8px;
 
 }
 
@@ -55,13 +52,41 @@ margin: auto;
 
 .questions {
   margin: auto;
-  padding: 50px 16px;
-  display: flex;
-  justify-content: center;
+  padding: 0;
+}
+
+.answers {
+  margin:auto;
 }
 
 h3 {
   margin: auto;
   padding: 1px 3px;
   display: flex;
+}
+
+.correctAnswer{
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid green;
+}
+
+.wrongAnswer {
+  margin: 10px;
+  padding: 10px;
+  border:1px solid red;
+}
+
+@media (min-width: 700px) {
+  body {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .container {
+    float:left;
+  } 
+
+  .container:nth-child{
+    margin-right:6%;
+  }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 /* eslint-disable no-console */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
@@ -34,6 +35,7 @@ const store = {
   score: 0
 };
 
+
 /**
  * 
  * Technical requirements:
@@ -51,39 +53,42 @@ const store = {
 
 /********** TEMPLATE GENERATION FUNCTIONS **********/
 
-// These functions return HTML templates
-//generate the start button
-// let startBtn = $('<input/>').attr({ type: 'button', name:'btn1', value:'Start Quiz' }).addClass('start-btn').on('startQuiz');
-// $('#root').append(startBtn);
+// These functions return HTML templat
 
-// let startQuiz = () => {
-//   $('#root').empty();
-// };
-
-// let generateQuestions = (store) => {
-//   return `<div question-id="${question.id}class="qestion">
-//   <span class`
-  // generate questions
-
-};
-
-// generate star quizz handler
-function handleStartBtn () {
-  $('start-btn').on('click',)
+function generateMainPage(){
+  return `<div class="container">
+  <h2>A quizz about the show "Girlfriends"</h2>
+  <button class="start-btn" id="start-btn">Start Quiz</button></div>`;
 }
 
-//generate the questions 
-// function generateStart() {
-//   let start = 'start';
-//   return `<main><div><button class="start-button"> ${start}</button></div></main>`;
-//   // eslint-disable-next-line no-unreachable
-//   $('.startButton').html(start);
-// }
+function generateQuestions(){
+  let question = store.questions[store.questionNumber];
+  let answers = question.answers.map((answer,index) => {
+    console.log(answer,index);
+    return `<input type="radio" id="answer${index}" name="answer" value="${answer}" />
+    <label for="answer${index}">${answer}</label><br />`;
+  });
 
-//generate question 
+  console.log(answers);
+  return `<div class="container">
+  <form class="questions"id="question">
+  <h2>${question.question}</h2>
+  <div class="answers">
+            <input type="radio" id="answer${index}" name="answer" value="${answer}" />
+            <label for="a1">${question.answers[0]}</label><br />
+            <input type="radio" id="answer2" name="answer" value="${question.answers[1]}" />
+            <label for="a2">${question.answers[1]}</label><br />
+            <input type="radio" id="answer2" name="answer" value="${question.answers[2]}" />
+            <label for="a2">${question.answers[2]}</label>
+            <input type="radio" id="answer2" name="answer" value="${question.answers[3]}" />
+            <label for="a2">${question.answers[3]}</label>
+  </div>
+  </form>
+  <button class="submit-btn"type="submit">Submit</button></div>
+</div>`;
+}
 
 
-//check the answer 
 
 
 /********** RENDER FUNCTION(S) **********/
@@ -91,8 +96,26 @@ function handleStartBtn () {
 // This function conditionally replaces the contents of the <main> tag based on the state of the store
 
 /********** EVENT HANDLER FUNCTIONS **********/
-function handleQuizz() {
-  generateStart();
+function handleStartQuiz(){
+  $('main').on('click','#start-btn', function(event){
+    store.quizStarted= true;
+    render();
+  });
+}
+// These functions handle events (submit, click, etc)
+
+function render (){
+  let html = '';
+  (!store.quizStarted) ?html =generateMainPage()
+    : html = generateQuestions();
+  
+
+  $('main').html(html);
 }
 
-// These functions handle events (submit, click, etc)
+function main (){
+  render();
+  handleStartQuiz();
+}
+
+$(main);
