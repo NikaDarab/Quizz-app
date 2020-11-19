@@ -57,13 +57,12 @@ function generateQuestions() {
     
 
     if (index === 0) {
-      return `<input type="radio" id="answer${index}" name="answer" value="${answer}" required>
-    <label for="answer${index}">${answer}</label><br />`;
+      return `<div class="feedback"><input type="radio" id="answer${index}" name="answer" value="${answer}" required>
+    <label for="answer${index}">${answer}</label><br /></div>`;
     }  
     return `<input type="radio" id="answer${index}" name="answer" value="${answer}"/>
     <label for="answer${index}">${answer}</label><br />`;
   });
-
   return `<div class="container">
   <div class="status"><span>Current question: ${store.questionNumber+1}</span></div>
   <span><div class="score"><span>Current score:${store.score}</div><span>
@@ -74,19 +73,23 @@ function generateQuestions() {
   </form>
 </div>`;
 }
-function generateCorrectAnswer(){
-  return `
-  <div class="correct-answer">
-  <h2> yeay, that's the right answer</h2>
-  <button id="next-btn>Next</button></div>
-  <p>Current Score:${store.score}</p>`;
-}
+// function generateCorrectAnswer(){
+//   return `
+//   <div class="correct-answer">
+//   <h2> yeay, that's the right answer</h2>
+//   <button id="next-btn>Next</button></div>
+//   <p>Current Score:${store.score}</p>`;
+// }
 function generateFinalPage(){
-  return `
-  <div class="finalPage">
-  <h2>Congrats, this is the end</h2>;
-  <p>Final Score: ${store.score}</p>
-  <button id="restart-btn">Start Over</button>`;
+  if(questionNumber === question.length){
+    return `
+    <div class="finalPage">
+    <h2>Congrats, this is the end</h2>;
+    <p>Final Score: ${store.score}</p>
+    <button id="restart-btn">Start Over</button>`;
+
+  }
+ 
 }
 
 
@@ -108,16 +111,22 @@ function handleAnswerSubmit() {
     let chosenAnswer = $("input[name='answer']:checked").val();
     let correctAnswer =store.questions[store.questionNumber].correctAnswer;
     if(chosenAnswer===correctAnswer) {
-      
-      $('main').html(generateCorrectAnswer());
       store.score++;
-    } 
-    $(main).html('<p>This is wrong</p>');
+      $('main').html(`<div class="checkAnswer"><h3> This is the right answer</h3> <button type="submit" class="next-button" id="nextQuestion" name="next">NEXT </button><p>${store.score} ${store.questionNumber+1}</p></div>`);
+    } else {
+      $('main').html(`<div class="checkAnswer"><h3>This is wrong</h3><button type="submit" id="nextQuestion" class="next-button" name="next">NEXT </button></div><p>${store.score} ${store.questionNumber+1}</p></div>`);
+    }
+    
   });
 }
 function handleNextQuestion() {
-  $("main").on("submit",' #nextQuestion',function(){
+  $("main").on("click",' #nextQuestion',function(event){
     store.questionNumber++;
+    if(store.questionNumber===store.questions.length){
+      $('main').html(`<button type="submit"  class="restartButton"id="restart-btn">Reset</button><div class="final-score">Final Score: ${store.score}</div>`);
+      render();
+    }
+    render();
   });
 
 }
