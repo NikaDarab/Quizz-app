@@ -24,33 +24,20 @@ font-family: 'Xanh Mono', monospace;;
 
   letter-spacing: 0.5em;
 }
-
+ iframe {
+   left: 50%;
+   top: 80%;
+   position: sticky;
+ }
 
 main {
-  display: flex;
-
-  flex-direction: column;
-
-  padding: 10px 20em;
-
-  width: 100%;
-
-  max-width: 400px;
-
-  margin: auto;
-
+  display:flex;
   justify-content: center;
-  text-align: center;
+  margin: 18px 25px;
+  padding: 55px 0 0 0;
+  color: #000;
 
 }
-
-.container {
-position: fixed;
-left: 50%;
-top: 50%;
-transform: translate(-50%, -50%);
-}
-
 .intro{
   text-align: center;
 }
@@ -63,6 +50,17 @@ transform: translate(-50%, -50%);
   color: #000;
 }
 
+.statue , .score {
+  text-align: left;
+}
+
+
+
+.next-button {
+  position: fixed;
+  left: 50%;
+  top:70%;
+}
 
 .start-btn {
   margin: auto;
@@ -90,20 +88,7 @@ margin: auto;
   justify-content: center;
 }
 
-.answers {
-  /* margin:auto; */
-}
 
-.status {
-  /* display: flex; */
-  justify-content: flex-end;
-}
-.score{
-
- /* display: flex; */
- text-align: left;
- justify-content: flex-start;
-}
 h3 {
   margin: auto;
   padding: 1px 3px;

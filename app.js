@@ -67,8 +67,7 @@ const store = {
 
 let gifArrayWrong = [
   'https://giphy.com/embed/3ohhwxCQmcq7dB6JBm',
-  "https://giphy.com/embed/l2QDSFhrmHU3MI1tS",
-  "https://giphy.com/gifs/dawniemarie-tony-maya-igIFTgALPj6mOGoiaZ"
+  "https://giphy.com/embed/l2QDSFhrmHU3MI1tS"
 ];
 
 /**
@@ -109,8 +108,8 @@ function generateQuestions() {
     <label for="answer${index}">${answer}</label><br />`;
   });
   return `<div class="container">
-  <div class="status"><span>Current question: ${store.questionNumber+1}</span></div>
-  <span><div class="score"><span>Current score:${store.score}</div><span>
+  <div class="status">Current question: ${store.questionNumber+1}</div>
+  <div class="score"><span>Current score:${store.score}</div>
   <form class="questions"id="question">
   <h2>${question.question}</h2>
   ${answer.join("")}
@@ -157,10 +156,14 @@ function handleAnswerSubmit() {
     let correctAnswer =store.questions[store.questionNumber].correctAnswer;
     if(chosenAnswer===correctAnswer) {
       store.score++;
-      $('main').html(`<div class="checkAnswer"><h3> This is the right answer</h3> <button type="submit" class="next-button" id="nextQuestion" name="next">NEXT </button><p>${store.score} ${store.questionNumber+1}</p></div>`);
+      $('main').html(`<div class="checkAnswer"><p><div class="container">
+      <div class="status">Current question: ${store.questionNumber+1}</div>
+      <div class="score"><span>Current score:${store.score}</div></p><button type="submit" class="next-button" id="nextQuestion" name="next">NEXT </button></div>`);
     } else {
       let randomGif=gifArrayWrong[Math.floor(Math.random()* gifArrayWrong.length)];
-      $('main').html(`<div class="checkAnswer"><h3>This is wrong</h3><button type="submit" id="nextQuestion" class="next-button" name="next">NEXT </button><iframe src="${randomGif}" width="480" height="234" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/dawniemarie-season-1-no-3ohhwxCQmcq7dB6JBm">via GIPHY</a></p></div><p>${store.score} ${store.questionNumber+1}</p></div>`);
+      $('main').html(`<div class="checkAnswer"><p><div class="container"><a href="https://giphy.com/gifs/dawniemarie-season-1-no-3ohhwxCQmcq7dB6JBm"></a></div><div class="status">Current question: ${store.questionNumber+1}</div>
+      <div class="score"><span>Current score:${store.score}</div></p>
+      <iframe src="${randomGif}" width="480" height="234" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><button type="submit" class="next-button" id="nextQuestion" name="next">NEXT </button></div>`);
     }
     
   });
