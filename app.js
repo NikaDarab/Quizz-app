@@ -65,6 +65,13 @@ const store = {
   score: 0,
 };
 
+let gifArr = [
+  'https://giphy.com/embed/3ohhwxCQmcq7dB6JBm',
+  "https://giphy.com/embed/l2QDSFhrmHU3MI1tS"
+  // <div style="width:100%;height:0;padding-bottom:47%;position:relative;"><iframe src="https://giphy.com/embed/l2QDSFhrmHU3MI1tS" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/dawniemarie-no-girlfriends-l2QDSFhrmHU3MI1tS">via GIPHY</a></p>
+  
+]
+
 /**
  *
  * Technical requirements:
@@ -154,7 +161,8 @@ function handleAnswerSubmit() {
       store.score++;
       $('main').html(`<div class="checkAnswer"><h3> This is the right answer</h3> <button type="submit" class="next-button" id="nextQuestion" name="next">NEXT </button><p>${store.score} ${store.questionNumber+1}</p></div>`);
     } else {
-      $('main').html(`<div class="checkAnswer"><h3>This is wrong</h3><button type="submit" id="nextQuestion" class="next-button" name="next">NEXT </button></div><p>${store.score} ${store.questionNumber+1}</p></div>`);
+      let randomGif=gifArr[Math.floor(Math.random()* gifArr.length)];
+      $('main').html(`<div class="checkAnswer"><h3>This is wrong</h3><button type="submit" id="nextQuestion" class="next-button" name="next">NEXT </button><iframe src="${randomGif}" width="480" height="234" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/dawniemarie-season-1-no-3ohhwxCQmcq7dB6JBm">via GIPHY</a></p></div><p>${store.score} ${store.questionNumber+1}</p></div>`);
     }
     
   });
