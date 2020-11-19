@@ -10,14 +10,54 @@ const store = {
   // 5 or more questions are required
   questions: [
     {
-      question: "What color is broccoli?",
-      answers: ["red", "orange", "pink", "green"],
-      correctAnswer: "green",
+      question: "Who are the four women who star in Girlfriends?",
+      answers: ["Joann, Lisa, Mia, Tasha", "Lynn, Jessica, Mia, Tonya", "Joan, Toni, Maya, Lynn", "Tony, Maya, Lynn, Monica"],
+      correctAnswer: "Joan, Toni, Maya, Lynn",
     },
     {
-      question: "What is the current year?",
-      answers: ["1970", "2015", "2019", "2005"],
-      correctAnswer: "2019",
+      question: "Did Toni and William ever date?",
+      answers: ["true", "false"],
+      correctAnswer: "false",
+    },
+    {
+      question: "Who do Toni call her bestfriend ?",
+      answers: ["Joan", "Lynn","Maya",'Herself'],
+      correctAnswer: "Joan",
+    },
+    {
+      question: "Who did Maya have an 'Almost' affair with ?",
+      answers: ["William", "Stan","James",'Steve'],
+      correctAnswer: "Stan",
+    },
+    {
+      question: "How did Maya get the start to her book, 'Oh Hell Yes' ?",
+      answers: ["Inspired by her divorce", "From writing an essay for school","Listening to Joan constant complain about dating","Trying to encourage Lynn to work"],
+      correctAnswer: "From writing an essay for school",
+    },
+    {
+      question: "What person told Maya that she should turn the essay into a book?",
+      answers: ["Joan", "Toni","Peaches","Cousin Ronnie"],
+      correctAnswer: "Cousin Ronnie",
+    },
+    {
+      question: "What TV Show character did William have a crush on?",
+      answers: ["Thelma from Good Times", "Gina from Martin","Kim from the Parkers","None of the above"],
+      correctAnswer: "Thelma from Good Times",
+    },
+    {
+      question: "Where did Joan take Toni to get over the breakup that Joan caused with Toni and Greg?",
+      answers: ["Yolanda Adams' One Love Cruise", "Arsenio's Cancun Jazz Festival","Sinbad's Soul Music Festival in Aruba","None the above"],
+      correctAnswer: "Sinbad's Soul Music Festival in Aruba",
+    },
+    {
+      question: "What celebrity guest appeared at Joan's opening of the J-Spot?",
+      answers: ["Diana Ross", "Mo'Nique","Jill Scoot","Queen Latifah"],
+      correctAnswer: "Mo'Nique",
+    },
+    {
+      question: "Which girl saw their father while on a Nude beach celebrating her 30th Birthday?",
+      answers: ["Joan", "Lynn","Toni","Maya"],
+      correctAnswer: "Joan",
     },
   ],
   quizStarted: false,
