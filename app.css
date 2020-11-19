@@ -24,11 +24,8 @@ font-family: 'Xanh Mono', monospace;;
 
   letter-spacing: 0.5em;
 }
- iframe {
-   left: 50%;
-   top: 80%;
-   position: sticky;
- }
+
+
 
 main {
   display:flex;
@@ -56,10 +53,10 @@ main {
 
 
 
-.next-button {
-  position: fixed;
-  left: 50%;
-  top:70%;
+.next-button, .reset-btn {
+  margin: 0 auto;
+  display: flex;
+  
 }
 
 .start-btn {
@@ -75,10 +72,7 @@ padding: 8px;
 
 }
 
-.next-btn {
-margin: auto;
 
-}
 
 .questions {
   border: 1px solid black;

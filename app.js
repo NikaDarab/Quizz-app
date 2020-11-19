@@ -70,6 +70,9 @@ let gifArrayWrong = [
   "https://giphy.com/embed/l2QDSFhrmHU3MI1tS"
 ];
 
+let gifArrayCorrect = [
+ "https://giphy.com/embed/Ph5iRGFNAOf0eblnAS"
+];
 /**
  *
  * Technical requirements:
@@ -117,24 +120,6 @@ function generateQuestions() {
   </form>
 </div>`;
 }
-// function generateCorrectAnswer(){
-//   return `
-//   <div class="correct-answer">
-//   <h2> yeay, that's the right answer</h2>
-//   <button id="next-btn>Next</button></div>
-//   <p>Current Score:${store.score}</p>`;
-// }
-function generateFinalPage(){
-  if(questionNumber === question.length){
-    return `
-    <div class="finalPage">
-    <h2>Congrats, this is the end</h2>;
-    <p>Final Score: ${store.score}</p>
-    <button id="restart-btn">Start Over</button>`;
-
-  }
- 
-}
 
 
 /********** RENDER FUNCTION(S) **********/
@@ -156,14 +141,22 @@ function handleAnswerSubmit() {
     let correctAnswer =store.questions[store.questionNumber].correctAnswer;
     if(chosenAnswer===correctAnswer) {
       store.score++;
-      $('main').html(`<div class="checkAnswer"><p><div class="container">
+      let randomGifCorrect=gifArrayCorrect[Math.floor(Math.random()* gifArrayCorrect.length)];
+      $('main').html(`<div class="checkAnswer"><div class="container">
+      <a href="https://giphy.com/gifs/dawniemarie-season-1-no-3ohhwxCQmcq7dB6JBm"></a></div>
       <div class="status">Current question: ${store.questionNumber+1}</div>
-      <div class="score"><span>Current score:${store.score}</div></p><button type="submit" class="next-button" id="nextQuestion" name="next">NEXT </button></div>`);
-    } else {
-      let randomGif=gifArrayWrong[Math.floor(Math.random()* gifArrayWrong.length)];
-      $('main').html(`<div class="checkAnswer"><p><div class="container"><a href="https://giphy.com/gifs/dawniemarie-season-1-no-3ohhwxCQmcq7dB6JBm"></a></div><div class="status">Current question: ${store.questionNumber+1}</div>
       <div class="score"><span>Current score:${store.score}</div></p>
-      <iframe src="${randomGif}" width="480" height="234" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><button type="submit" class="next-button" id="nextQuestion" name="next">NEXT </button></div>`);
+      <iframe src="${randomGifCorrect}" width="480" height="234" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+      </form><button type="submit" class="next-button" id="nextQuestion" name="next">NEXT </button></form></div>`);
+    } else {
+
+      let randomGifWrong=gifArrayWrong[Math.floor(Math.random()* gifArrayWrong.length)];
+
+      $('main').html(`<div class="checkAnswer"><div class="container">
+      <a href="https://giphy.com/gifs/dawniemarie-season-1-no-3ohhwxCQmcq7dB6JBm"></a></div><div class="status">Current question: ${store.questionNumber+1}</div>
+      <div class="score"><span>Current score:${store.score}</div>
+      <iframe src="${randomGifWrong}" width="480" height="234" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+      <form><button type="submit" class="next-button" id="nextQuestion" name="next">NEXT </button></form></div>`);
     }
     
   });
@@ -172,7 +165,11 @@ function handleNextQuestion() {
   $("main").on("click",' #nextQuestion',function(event){
     store.questionNumber++;
     if(store.questionNumber===store.questions.length){
-      $('main').html(`<button type="submit"  class="restartButton"id="restart-btn">Reset</button><div class="final-score">Final Score: ${store.score}</div>`);
+      $('main').html(`
+      <div class="score">Final Score: ${store.score}</div>
+      <form><button type="submit"  class="restart-btn"id="restart-btn">Reset</button></form>
+      `);
+
       render();
     }
     render();
