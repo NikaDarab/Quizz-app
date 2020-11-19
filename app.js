@@ -4,14 +4,19 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable strict */
 /**
- * Example store structure
+ * Example  store structure
  */
 const store = {
   // 5 or more questions are required
   questions: [
     {
       question: "Who are the four women who star in Girlfriends?",
-      answers: ["Joann, Lisa, Mia, Tasha", "Lynn, Jessica, Mia, Tonya", "Joan, Toni, Maya, Lynn", "Tony, Maya, Lynn, Monica"],
+      answers: [
+        "Joann, Lisa, Mia, Tasha",
+        "Lynn, Jessica, Mia, Tonya",
+        "Joan, Toni, Maya, Lynn",
+        "Tony, Maya, Lynn, Monica",
+      ],
       correctAnswer: "Joan, Toni, Maya, Lynn",
     },
     {
@@ -21,42 +26,61 @@ const store = {
     },
     {
       question: "Who do Toni call her bestfriend ?",
-      answers: ["Joan", "Lynn","Maya",'Herself'],
+      answers: ["Joan", "Lynn", "Maya", "Herself"],
       correctAnswer: "Joan",
     },
     {
       question: "Who did Maya have an 'Almost' affair with ?",
-      answers: ["William", "Stan","James",'Steve'],
+      answers: ["William", "Stan", "James", "Steve"],
       correctAnswer: "Stan",
     },
     {
       question: "How did Maya get the start to her book, 'Oh Hell Yes' ?",
-      answers: ["Inspired by her divorce", "From writing an essay for school","Listening to Joan constant complain about dating","Trying to encourage Lynn to work"],
+      answers: [
+        "Inspired by her divorce",
+        "From writing an essay for school",
+        "Listening to Joan constant complain about dating",
+        "Trying to encourage Lynn to work",
+      ],
       correctAnswer: "From writing an essay for school",
     },
     {
-      question: "What person told Maya that she should turn the essay into a book?",
-      answers: ["Joan", "Toni","Peaches","Cousin Ronnie"],
+      question:
+        "What person told Maya that she should turn the essay into a book?",
+      answers: ["Joan", "Toni", "Peaches", "Cousin Ronnie"],
       correctAnswer: "Cousin Ronnie",
     },
     {
       question: "What TV Show character did William have a crush on?",
-      answers: ["Thelma from Good Times", "Gina from Martin","Kim from the Parkers","None of the above"],
+      answers: [
+        "Thelma from Good Times",
+        "Gina from Martin",
+        "Kim from the Parkers",
+        "None of the above",
+      ],
       correctAnswer: "Thelma from Good Times",
     },
     {
-      question: "Where did Joan take Toni to get over the breakup that Joan caused with Toni and Greg?",
-      answers: ["Yolanda Adams' One Love Cruise", "Arsenio's Cancun Jazz Festival","Sinbad's Soul Music Festival in Aruba","None the above"],
+      question:
+        "Where did Joan take Toni to get over the breakup that Joan caused with Toni and Greg?",
+      answers: [
+        "Yolanda Adams' One Love Cruise",
+        "Arsenio's Cancun Jazz Festival",
+        "Sinbad's Soul Music Festival in Aruba",
+        "None the above",
+      ],
       correctAnswer: "Sinbad's Soul Music Festival in Aruba",
     },
     {
-      question: "What celebrity guest appeared at Joan's opening of the J-Spot?",
-      answers: ["Diana Ross", "Mo'Nique","Jill Scoot","Queen Latifah"],
+      question:
+        "What celebrity guest appeared at Joan's opening of the J-Spot?",
+      answers: ["Diana Ross", "Mo'Nique", "Jill Scoot", "Queen Latifah"],
       correctAnswer: "Mo'Nique",
     },
     {
-      question: "Which girl saw their father while on a Nude beach celebrating her 30th Birthday?",
-      answers: ["Joan", "Lynn","Toni","Maya"],
+      question:
+        "Which girl saw their father while on a Nude beach celebrating her 30th Birthday?",
+      answers: ["Joan", "Lynn", "Toni", "Maya"],
       correctAnswer: "Joan",
     },
   ],
@@ -66,13 +90,11 @@ const store = {
 };
 
 let gifArrayWrong = [
-  'https://giphy.com/embed/3ohhwxCQmcq7dB6JBm',
-  "https://giphy.com/embed/l2QDSFhrmHU3MI1tS"
+  "https://giphy.com/embed/3ohhwxCQmcq7dB6JBm",
+  "https://giphy.com/embed/l2QDSFhrmHU3MI1tS",
 ];
 
-let gifArrayCorrect = [
- "https://giphy.com/embed/Ph5iRGFNAOf0eblnAS"
-];
+let gifArrayCorrect = ["https://giphy.com/embed/Ph5iRGFNAOf0eblnAS"];
 /**
  *
  * Technical requirements:
@@ -102,16 +124,15 @@ function generateQuestions() {
   let question = store.questions[store.questionNumber];
 
   let answer = question.answers.map((answer, index) => {
-
     if (index === 0) {
       return `<div class="answers"><input type="radio" id="answer${index}" name="answer" value="${answer}" required>
     <label for="answer${index}">${answer}</label><br /></div>`;
-    }  
+    }
     return `<input type="radio" id="answer${index}" name="answer" value="${answer}"/>
     <label for="answer${index}">${answer}</label><br />`;
   });
   return `<div class="container">
-  <div class="status">Current question: ${store.questionNumber+1}</div>
+  <div class="status">Current question: ${store.questionNumber + 1}</div>
   <div class="score"><span>Current score:${store.score}</div>
   <form class="questions"id="question">
   <h2>${question.question}</h2>
@@ -120,7 +141,6 @@ function generateQuestions() {
   </form>
 </div>`;
 }
-
 
 /********** RENDER FUNCTION(S) **********/
 
@@ -135,37 +155,39 @@ function handleStartQuiz() {
 }
 
 function handleAnswerSubmit() {
-  $("main").on("submit",'#question',function(event){
+  $("main").on("submit", "#question", function (event) {
     event.preventDefault();
     let chosenAnswer = $("input[name='answer']:checked").val();
-    let correctAnswer =store.questions[store.questionNumber].correctAnswer;
-    if(chosenAnswer===correctAnswer) {
+    let correctAnswer = store.questions[store.questionNumber].correctAnswer;
+    if (chosenAnswer === correctAnswer) {
       store.score++;
-      let randomGifCorrect=gifArrayCorrect[Math.floor(Math.random()* gifArrayCorrect.length)];
-      $('main').html(`<div class="checkAnswer"><div class="container">
+      let randomGifCorrect =
+        gifArrayCorrect[Math.floor(Math.random() * gifArrayCorrect.length)];
+      $("main").html(`<div class="checkAnswer"><div class="container">
       <a href="https://giphy.com/gifs/dawniemarie-season-1-no-3ohhwxCQmcq7dB6JBm"></a></div>
-      <div class="status">Current question: ${store.questionNumber+1}</div>
+      <div class="status">Current question: ${store.questionNumber + 1}</div>
       <div class="score"><span>Current score:${store.score}</div></p>
       <iframe src="${randomGifCorrect}" width="480" height="234" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
       </form><button type="submit" class="next-button" id="nextQuestion" name="next">NEXT </button></form></div>`);
     } else {
+      let randomGifWrong =
+        gifArrayWrong[Math.floor(Math.random() * gifArrayWrong.length)];
 
-      let randomGifWrong=gifArrayWrong[Math.floor(Math.random()* gifArrayWrong.length)];
-
-      $('main').html(`<div class="checkAnswer"><div class="container">
-      <a href="https://giphy.com/gifs/dawniemarie-season-1-no-3ohhwxCQmcq7dB6JBm"></a></div><div class="status">Current question: ${store.questionNumber+1}</div>
+      $("main").html(`<div class="checkAnswer"><div class="container">
+      <a href="https://giphy.com/gifs/dawniemarie-season-1-no-3ohhwxCQmcq7dB6JBm"></a></div><div class="status">Current question: ${
+  store.questionNumber + 1
+}</div>
       <div class="score"><span>Current score:${store.score}</div>
       <iframe src="${randomGifWrong}" width="480" height="234" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
       <form><button type="submit" class="next-button" id="nextQuestion" name="next">NEXT </button></form></div>`);
     }
-    
   });
 }
 function handleNextQuestion() {
-  $("main").on("click",' #nextQuestion',function(event){
+  $("main").on("click", " #nextQuestion", function (event) {
     store.questionNumber++;
-    if(store.questionNumber===store.questions.length){
-      $('main').html(`
+    if (store.questionNumber === store.questions.length) {
+      $("main").html(`
       <div class="score">Final Score: ${store.score}</div>
       <form><button type="submit"  class="restart-btn"id="restart-btn">Reset</button></form>
       `);
@@ -174,13 +196,12 @@ function handleNextQuestion() {
     }
     render();
   });
-
 }
 
 function handleRestart() {
-  $('main').on('click',"#restart-btn",function(){
-    store.quizStarted =false;
-    store.questionNumber=0;
+  $("main").on("click", "#restart-btn", function () {
+    store.quizStarted = false;
+    store.questionNumber = 0;
     render();
   });
 }
@@ -190,9 +211,9 @@ function render() {
   let html = "";
   store.quizStarted
     ? (html = generateQuestions())
-    : store.questionNumber === store.questions.length ?
-      (html = generateFinalPage):
-      (html = generateMainPage());
+    : store.questionNumber === store.questions.length
+      ? (html = generateFinalPage)
+      : (html = generateMainPage());
 
   $("main").html(html);
 }
@@ -203,7 +224,6 @@ function main() {
   handleAnswerSubmit();
   handleNextQuestion();
   handleRestart();
-
 }
 
 $(main);

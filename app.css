@@ -9,8 +9,8 @@
 html {
   box-sizing: border-box;
   height: 100%;
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
 }
 body {
   background-image: linear-gradient(
@@ -18,61 +18,54 @@ body {
     rgba(223, 62, 33, 0.5) 5%,
     rgba(217, 240, 11, 0.35)
   );
-font-family: 'Xanh Mono', monospace;;
+  font-family: "Xanh Mono", monospace;
 
   line-height: 2;
 
   letter-spacing: 0.5em;
 }
 
-
-
 main {
-  display:flex;
+  display: flex;
   justify-content: center;
   margin: 18px 25px;
   padding: 55px 0 0 0;
   color: #000;
-
 }
-.intro{
+.intro {
   text-align: center;
 }
 
 .title {
-  display:flex;
+  display: flex;
   justify-content: center;
   margin: 18px 25px;
   padding: 55px 0 0 0;
   color: #000;
 }
 
-.statue , .score {
+.statue,
+.score {
   text-align: left;
 }
 
-
-
-.next-button, .reset-btn {
+.next-button,
+.reset-btn {
   margin: 0 auto;
   display: flex;
-  
 }
 
 .start-btn {
   margin: auto;
   padding: 8px 16px;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
 }
 
 .submit-btn {
-margin: 30px 0 ;
-padding: 8px;
-
+  margin: 30px 0;
+  padding: 8px;
 }
-
-
 
 .questions {
   border: 1px solid black;
@@ -82,14 +75,13 @@ padding: 8px;
   justify-content: center;
 }
 
-
 h3 {
   margin: auto;
   padding: 1px 3px;
   display: flex;
 }
 
-.correctAnswer{
+.correctAnswer {
   margin: 10px;
   padding: 10px;
   border: 1px solid green;
@@ -98,7 +90,7 @@ h3 {
 .wrongAnswer {
   margin: 10px;
   padding: 10px;
-  border:1px solid red;
+  border: 1px solid red;
 }
 
 @media (min-width: 700px) {
@@ -107,10 +99,10 @@ h3 {
     margin: 0 auto;
   }
   .container {
-    float:left;
-  } 
+    float: left;
+  }
 
-  .container:nth-child{
-    margin-right:6%;
+  .container:nth-child {
+    margin-right: 6%;
   }
 }
