@@ -59,6 +59,9 @@ margin: auto;
   margin:auto;
 }
 
+.score{
+  text-align: right;
+}
 h3 {
   margin: auto;
   padding: 1px 3px;
