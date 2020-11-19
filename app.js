@@ -65,12 +65,11 @@ const store = {
   score: 0,
 };
 
-let gifArr = [
+let gifArrayWrong = [
   'https://giphy.com/embed/3ohhwxCQmcq7dB6JBm',
-  "https://giphy.com/embed/l2QDSFhrmHU3MI1tS"
-  // <div style="width:100%;height:0;padding-bottom:47%;position:relative;"><iframe src="https://giphy.com/embed/l2QDSFhrmHU3MI1tS" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/dawniemarie-no-girlfriends-l2QDSFhrmHU3MI1tS">via GIPHY</a></p>
-  
-]
+  "https://giphy.com/embed/l2QDSFhrmHU3MI1tS",
+  "https://giphy.com/gifs/dawniemarie-tony-maya-igIFTgALPj6mOGoiaZ"
+];
 
 /**
  *
@@ -93,7 +92,7 @@ let gifArr = [
 
 function generateMainPage() {
   return `<div class="container">
-  <h2>A quizz about the show "Girlfriends"</h2>
+  <h2>A quizz about the show <span class="gf">Girlfriends</span></h2>
   <button class="start-btn" id="start-btn">Start Quiz</button></div>`;
 }
 
@@ -101,10 +100,9 @@ function generateQuestions() {
   let question = store.questions[store.questionNumber];
 
   let answer = question.answers.map((answer, index) => {
-    
 
     if (index === 0) {
-      return `<div class="feedback"><input type="radio" id="answer${index}" name="answer" value="${answer}" required>
+      return `<div class=""><input type="radio" id="answer${index}" name="answer" value="${answer}" required>
     <label for="answer${index}">${answer}</label><br /></div>`;
     }  
     return `<input type="radio" id="answer${index}" name="answer" value="${answer}"/>
@@ -161,7 +159,7 @@ function handleAnswerSubmit() {
       store.score++;
       $('main').html(`<div class="checkAnswer"><h3> This is the right answer</h3> <button type="submit" class="next-button" id="nextQuestion" name="next">NEXT </button><p>${store.score} ${store.questionNumber+1}</p></div>`);
     } else {
-      let randomGif=gifArr[Math.floor(Math.random()* gifArr.length)];
+      let randomGif=gifArrayWrong[Math.floor(Math.random()* gifArrayWrong.length)];
       $('main').html(`<div class="checkAnswer"><h3>This is wrong</h3><button type="submit" id="nextQuestion" class="next-button" name="next">NEXT </button><iframe src="${randomGif}" width="480" height="234" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/dawniemarie-season-1-no-3ohhwxCQmcq7dB6JBm">via GIPHY</a></p></div><p>${store.score} ${store.questionNumber+1}</p></div>`);
     }
     
