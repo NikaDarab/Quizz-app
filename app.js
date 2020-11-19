@@ -92,7 +92,7 @@ let gifArrayWrong = [
 
 function generateMainPage() {
   return `<div class="container">
-  <h2>A quizz about the show <span class="gf">Girlfriends</span></h2>
+  <h2 class="intro">A Quizz About The Show <span class="gf">GIRLFRIENDS</span></h2>
   <button class="start-btn" id="start-btn">Start Quiz</button></div>`;
 }
 
@@ -102,7 +102,7 @@ function generateQuestions() {
   let answer = question.answers.map((answer, index) => {
 
     if (index === 0) {
-      return `<div class=""><input type="radio" id="answer${index}" name="answer" value="${answer}" required>
+      return `<div class="answers"><input type="radio" id="answer${index}" name="answer" value="${answer}" required>
     <label for="answer${index}">${answer}</label><br /></div>`;
     }  
     return `<input type="radio" id="answer${index}" name="answer" value="${answer}"/>
