@@ -94,7 +94,7 @@ let gifArrayWrong = [
   "https://giphy.com/embed/l2QDSFhrmHU3MI1tS",
 ];
 
-let gifArrayCorrect = ["https://giphy.com/embed/Ph5iRGFNAOf0eblnAS"];
+let gifArrayCorrect = ["https://giphy.com/gifs/gffcSKwGREETNo9rsy/html5",'https://giphy.com/gifs/kfXJTsTzz0hx6zDfBn/html5'];
 /**
  *
  * Technical requirements:
@@ -142,14 +142,73 @@ function generateQuestions() {
 </div>`;
 }
 
+function generateFinalPage() {
+  return `<div class="correctPage">
+  <h2 class="final">Yay! You finished the quiz!</h2>
+  <p class="answerCounter">Correct: ${store.score} Incorrect: ${store.wrong}</p>
+  <img class="correctGif" src="./images/party-hard.gif" alt="Harry and Ron smiling">
+  <button id="reset">Try Again?</button>
+</div>`;
+}
+
 /********** RENDER FUNCTION(S) **********/
 
 // This function conditionally replaces the contents of the <main> tag based on the state of the store
 
 /********** EVENT HANDLER FUNCTIONS **********/
+
+function renderPage() {
+  let html = '';
+  if (store.quizStarted) {
+    if (store.questionNumber === store.questions.length) {
+      html = generateFinalPage();
+    } else {
+      html = generateQuestions();
+    } 
+  } else {
+    html = generateMainPage();
+  }
+  $('main').html(html);
+}
+
 function handleStartQuiz() {
   $("main").on("click", ".start-btn", function (event) {
     store.quizStarted = true;
+    renderPage();
+  });
+}
+function checkAnswer(){
+  $('main').on('submit', '#questionForm', function(event) {
+    event.preventDefault();
+    let e = store.questions[store.questionNumber].correctAnswer;
+    let submitValue = $('input[name="answer"]:checked').val();
+    console.log(e, submitValue);
+    if (submitValue === e) {
+      store.score++;
+      $('main').html(`<div class="correctPage">
+       <h2 class="correct">Yay! you were correct!</h2>
+       <p class="answerCounter">Correct: ${store.score} Incorrect: ${store.wrong}</p>
+       <button id="nextBtn">Next Question</button>
+       <img class="correctGif" src="./images/harry-and-ron.gif" alt="Harry and Ron smiling">
+     </div>
+     `);
+    } else {
+      store.wrong++;
+      $('main').html(`<div class="incorrectPage">
+       <h2 class="incorrect">Oh no! That is the wrong answer!</h2>
+       <p class="answerCounter">Correct: ${store.score} Incorrect: ${store.wrong}</p>
+       <button id="nextBtn">Next Question</button>
+       <img class="incorrectGif" src="./images/harry-rubber-arm.gif" alt="Harry holding rubber arm in shock">
+     </div>
+     `);
+    }   
+  });
+}
+
+
+function handleNextQuestion() {
+  $("main").on("click", " #nextQuestion", function (event) {
+    store.questionNumber++;
     render();
   });
 }
@@ -183,20 +242,7 @@ function handleAnswerSubmit() {
     }
   });
 }
-function handleNextQuestion() {
-  $("main").on("click", " #nextQuestion", function (event) {
-    store.questionNumber++;
-    if (store.questionNumber === store.questions.length) {
-      $("main").html(`
-      <div class="score">Final Score: ${store.score}</div>
-      <form><button type="submit"  class="restart-btn"id="restart-btn">Reset</button></form>
-      `);
 
-      render();
-    }
-    render();
-  });
-}
 
 function handleRestart() {
   $("main").on("click", "#restart-btn", function () {
