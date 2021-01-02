@@ -1,1 +1,2 @@
-### Boilerplate app structure for Quiz App project
+###Quiz App
+This is a quizz app that was wrote in jquery.
